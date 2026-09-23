@@ -14,6 +14,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.DirectoryChooser;
@@ -59,6 +60,11 @@ public class GuilSController {
     @FXML
     private Text directoryText;
 
+    @FXML
+    private Pane topPane;
+
+    private double xOffset = 0;
+    private double yOffset = 0;
     Stage primaryStage;
     Scene scene;
     String files;
@@ -78,6 +84,19 @@ public class GuilSController {
     void minimizeAction(ActionEvent event) {
         primaryStage = (Stage) scenePane.getScene().getWindow();
         primaryStage.setIconified(true);
+    }
+
+    @FXML
+    protected void handleMovementAction(MouseEvent event) {
+        Stage stage = (Stage) topPane.getScene().getWindow();
+        stage.setX(event.getScreenX() - xOffset);
+        stage.setY(event.getScreenY() - yOffset);
+    }
+
+    @FXML
+    protected void handlePressedAction(MouseEvent event) {
+        xOffset = event.getX();
+        yOffset = event.getY();
     }
 
     @FXML
@@ -121,7 +140,6 @@ public class GuilSController {
             selectedDirFile = directoryChooser.showDialog(primaryStage);
 
             String selectedDirPath = selectedDirFile.getPath();
-            System.out.println(selectedDirPath);
             directoryText.setText(selectedDirPath);
 
             readDirectory();

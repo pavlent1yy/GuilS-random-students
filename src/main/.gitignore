@@ -1,0 +1,10 @@
+# Игнорируем настройки IntelliJ IDEA
+.idea/
+*.iws
+*.iml
+*.ipr
+
+# Игнорируем Maven Wrapper
+.mvn/
+mvnw
+mvnw.cmd

@@ -62,5 +62,6 @@
          </image>
       </ImageView>
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+      <Pane fx:id="topPane" layoutX="11.0" layoutY="5.0" onMouseDragged="#handleMovementAction" onMousePressed="#handlePressedAction" prefHeight="42.0" prefWidth="405.0" />
    </children>
 </AnchorPane>
